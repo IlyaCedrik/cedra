@@ -1,0 +1,8 @@
+{
+  "name": "cedra",
+  "version": "0.0.2",
+  "description": "Простой sass фреймворк с собственными компонентами для быстрого начала проекта",
+  "main": "index.scss",
+  "author": "Cedrik Ilya",
+  "license": "ISC"
+}

@@ -1,0 +1,94 @@
+
+@mixin navbar($align: null, $mobile: 992px) {
+  @include line();
+  @include v-align(center);
+
+  @if ($align != null) {
+    @include h-align($align);
+  }
+
+  a,
+  li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  & li:hover > ul {
+    visibility: visible;
+  }
+}
+
+@mixin sub-nav() {
+  position: absolute;
+  top: 100%;
+  padding: 0;
+  visibility: hidden;
+
+  & li {
+    margin: 0;
+
+    a {
+      display: block;
+    }
+  }
+}
+
+
+@mixin mobile-nav($w: 992px) {
+  @media (max-width: $w) {
+    .nav_mobile-icon {
+      display: inline-block;
+      width: 40px;
+      height: 35px;
+      vertical-align: middle;
+      cursor: pointer;
+      position: relative;
+      z-index: 9999;
+
+      span {
+        display: block;
+        height: 5px;
+        margin: 5px 0;
+        border-radius: 0.5rem;
+        background: black;
+        transition: all 0.5s;
+      }
+
+      &.hide {
+        & span:first-child {
+          transform: translateY(10px) rotate(45deg);
+        }
+
+        & span:nth-child(2) {
+          background: transparent;
+        }
+
+        & span:last-child {
+          transform: translateY(-10px) rotate(-45deg);
+        }
+      }
+    }
+
+    & > ul {
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: block;
+      height: 100%;
+      margin: 0;
+      padding-right: 50px;
+      transform: translateX(100%);
+      transition: transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+      li {
+        display: block;
+      }
+
+      &.show {
+        transform: translateX(0);
+      }
+    }
+  }
+}
+

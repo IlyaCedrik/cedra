@@ -1,0 +1,46 @@
+@mixin line ($p: null) {
+    $gap: map-get($map: $grid, $key: container);
+    display: flex;
+    flex-wrap: wrap;
+    @if ($p == null) {
+        @if ($gap) {
+            margin-left: -$gap;
+            margin-right: -$gap;
+        }
+    }
+    @else { 
+        margin-left: $gap;
+        margin-right: $gap;
+    }
+
+}
+
+@mixin h-align($align) {
+    @if ($align==center) {
+        justify-content: center;
+    }
+    @if ($align==right) {
+        justify-content: flex-end;
+    }
+    @if ($align==between) {
+        justify-content: space-between;
+    }
+    @if ($align==around) {
+        justify-content: space-around;
+    }
+}
+
+@mixin v-align($align) {
+    @if ($align==center) {
+        align-items: center;
+    }
+    @if ($align==bottom) {
+        align-items: flex-end;
+    }
+    @if ($align==top) {
+        align-items: flex-start;
+    }
+    @if ($align==around) {
+        align-items: space-around;
+    }
+}
