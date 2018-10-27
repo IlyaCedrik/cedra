@@ -1,12 +1,8 @@
-$grid: ( 
-  breakpoints: (
-    sx: 0,
-    sm: 480px,
-    md: 768px, 
-    lg: 992px, 
-    xl: 1200px
-    ),
-  container: 15px,
-  width-grid: 1170px,
-  gap : 15px,
-);
+$breakpoints: (sx: 480px,
+sm: 768px,
+md: 960px,
+lg: 1170px,
+lx: 1344px);
+
+$column: 12;
+$gap: 15px;

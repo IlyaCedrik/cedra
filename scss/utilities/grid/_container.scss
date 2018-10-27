@@ -1,27 +1,22 @@
-@mixin container ($col: 12) {
-  $column: $col !global;
-  $media_width: map-get($map: $grid, $key: breakpoints);
-  $gap: map-get($map: $grid, $key: container);
-  $width: map-get($map: $grid, $key: width-grid);
-  @if ($width !=null) {
-    max-width: $width;
-  }
+@mixin container {
+
   margin: 0 auto;
-  @if ($gap !=null) {
-    padding-right: $gap;
-    padding-left: $gap;
-  }
-  @each $width,
-  $value in $media_width {
-    @if ($value > 900) {
-      @media (min-width: $value) {
-        max-width: $value
-      }
-    }
+  padding: 0 $gap;
+
+  @media screen and (min-width: device(md) + $gap * 2) and (max-width: device(lg) + $gap * 2) {
+    max-width: device(md) + $gap * 2;
   }
 
-  @media (max-width: 992px) {
-    padding-right: $gap * 2;
-    padding-left: $gap * 2;
+  @media screen and (min-width: device(lg) + $gap * 2) and (max-width: device(lx) + $gap * 2) {
+    max-width: device(lg)  + $gap * 2;
   }
+
+  @media screen and (min-width: device(lx) + $gap * 2) {
+    max-width: device(lx) + $gap * 2;
+  }
+
+  &.is-fluid {
+    max-width: inherit;
+  }
+
 }

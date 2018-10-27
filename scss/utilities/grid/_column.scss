@@ -1,32 +1,13 @@
-    @mixin col ($size: null, $vert: null) {
-        $gap: map-get($map: $grid, $key: gap);
-        padding-left: $gap;
-        padding-right: $gap;
-        @if ( $size !=null) {
-            width: (100% / $column) * $size;
-            min-width: (100% / $column) * $size;
-        }
-        @else {
-            flex: 1 1 0;
-        }
-        @if ($vert !=null) {
-            @if ($vert==center) {
-                margin: auto 0;
-            }
-            @if ($vert==top) {
-                align-self: flex-start;
-            }
-            @if ($vert==bottom) {
-                align-self: flex-end;
-            }
-        }
+@mixin col ($size: null) {
+
+    padding: 0 $gap;
+
+    @if ($size !=null) {
+        width: (100% / $column) * $size;
+        min-width: (100% / $column) * $size;
     }
 
-    @mixin col-push($size: null) {
-        margin-left: (100% / 12) * $size;
+    @else {
+        flex: 1 1 0;
     }
-
-    @mixin col-pull($size: null) {
-        position: relative;
-        right: (100% / 12) * $size;
-    }
+}

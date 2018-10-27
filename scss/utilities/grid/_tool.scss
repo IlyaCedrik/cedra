@@ -1,13 +1,19 @@
-$media: map-get($map: $grid, $key: breakpoints);
-@mixin adaptive($size) {
-    @if (type-of($size)==number) {
-        @media (max-width: $size + "px") {
-            @content
-        }
-    }
-    @else {
-        @media (max-width: map-get($map: $media, $key: $size)) {
-            @content
-        }
-    }
+@function device($size) {
+    @return map-get($breakpoints, $size);
 }
+
+
+// $media: map-get($map: $grid, $key: breakpoints);
+// @mixin adaptive($size) {
+//     @if (type-of($size)==number) {
+//         @media (max-width: $size + "px") {
+//             @content
+//         }
+//     } @else {
+//         @media (max-width: map-get($map: $media, $key: $size)) {
+//             @content
+//         }
+//     }
+// }
+
+

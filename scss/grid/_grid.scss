@@ -1,59 +1,84 @@
-/*
- *
- * Grid
- *
- */
- $horizontal: ('center', 'between', 'right', 'around');
- $vertical: ('center', 'bottom', 'top', 'around');
+.container {
+    @include container();
+}
+
+.line {
+    @include line();
+}
+
+.col {
+    @include col();
+    background: salmon;
+}
+
+@for $i from 1 through 12 {
+    .col_#{$i} {
+        @include col($i);
+        background: salmon;
+    }
+}
+
+
+
+
+
+
+
+//  $horizontal: ('center', 'between', 'right', 'around');
+//  $vertical: ('center', 'bottom', 'top', 'around');
+
+
+
+
+//  .is_fluid {
+//      @include line(fluid);
+//  }
+
+//  @each $horz in $horizontal {
+//      .is_#{$horz} {
+//          @include line();
+//          @include h-align($horz);
+//      }
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  @each $vert in $vertical {
+//      .items_#{$vert} {
+//          @include v-align($vert);
+//      }
+//  }
+
  
- .container {
-     background: skyblue;
-     @include container();
- }
- 
- .line {
-     background: sienna;
-     @include line();
- }
- 
- .line_fluid {
-     background: sienna;
-     @include line(fluid);
- }
- 
- @each $horz in $horizontal {
-     .line_#{$horz} {
-         @include line();
-         @include h-align($horz);
-     }
- }
- 
- @each $vert in $vertical {
-     .items_#{$vert} {
-         @include v-align($vert);
-     }
- }
- 
- .col {
-     @include col();
-     background: salmon;
- }
- 
- @for $i from 1 through 12 {
-     .col_#{$i} {
-         @include col($i);
-         background: salmon;
-     }
- }
- 
- @for $i from 1 through 11 {
-     .push_#{$i} {
-         @include col-push($i);
-     }
- }
- 
- @for $i from 1 through 11 {
-     .pull_#{$i} {
-         @include col-pull($i);
-     }
- }
+
+//  @for $i from 1 through 11 {
+//      .push_#{$i} {
+//          @include col-push($i);
+//      }
+//  }
+
+//  @for $i from 1 through 11 {
+//      .pull_#{$i} {
+//          @include col-pull($i);
+//      }
+//  }
