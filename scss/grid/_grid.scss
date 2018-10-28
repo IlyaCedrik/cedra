@@ -1,84 +1,104 @@
+//  *  Variables
+
+$breakpoints: (lx: 1344px,
+lg: 1170px,
+md: 960px,
+sm: 768px,
+sx: 480px);
+
+$columns: 12;
+$gap: 15px;
+
+
+
+//  *  Grid
+
 .container {
-    @include container();
-}
+    margin: 0 auto;
+    padding: 0 $gap;
 
-.line {
-    @include line();
-}
+    @media screen and (min-width: device(md) + $gap * 2) and (max-width: device(lg) + $gap * 2) {
+        max-width: device(md) + $gap * 2;
+    }
 
-.col {
-    @include col();
-    background: salmon;
-}
+    @media screen and (min-width: device(lg) + $gap * 2) and (max-width: device(lx) + $gap * 2) {
+        max-width: device(lg) + $gap * 2;
+    }
 
-@for $i from 1 through 12 {
-    .col_#{$i} {
-        @include col($i);
-        background: salmon;
+    @media screen and (min-width: device(lx) + $gap * 2) {
+        max-width: device(lx) + $gap * 2;
+    }
+
+    &.is-fluid {
+        max-width: inherit;
     }
 }
 
 
+.line {
+    margin: 0 (-$gap);
+
+    &:not(.is-desctop) {
+        display: flex;
+    }
+
+    &.is-mobile {
+        display: flex;
+    }
+
+    @media screen and (min-width: device(md)) {
+        &.is-desctop {
+            display: flex;
+        }
+    }
+
+
+    > .col {
+        padding: 0 $gap;
+
+        &:not([class*=is]) {
+            flex: 1 1 0;
+        }
+
+
+        @for $i from 1 through $columns {
+            &.is-#{$i} {
+                width: (100% / $columns) * $i;
+                min-width: (100% / $columns) * $i;
+            }
+        }
+
+
+        @for $i from 1 through $columns - 1 {
+            &.push_#{$i} {
+                position: relative;
+                left: (100% / $columns) * $i;
+            }
+        }
+
+        @for $i from 1 through $columns - 1 {
+            &.pull_#{$i} {
+                position: relative;
+                right: (100% / $columns) * $i;
+            }
+        }
 
 
 
+        // Responsive
 
+        @each $size,
+        $value in $breakpoints {
+            @media screen and (max-width: device($size)) {
+                @for $count from 1 through $columns {
+                    &.is-#{$count}-#{$size} {
+                        width: (100% / $columns) * $count;
+                        min-width: (100% / $columns) * $count;
+                    }
+                }
+            }
+        }
 
-//  $horizontal: ('center', 'between', 'right', 'around');
-//  $vertical: ('center', 'bottom', 'top', 'around');
+    }
 
-
-
-
-//  .is_fluid {
-//      @include line(fluid);
-//  }
-
-//  @each $horz in $horizontal {
-//      .is_#{$horz} {
-//          @include line();
-//          @include h-align($horz);
-//      }
-//  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//  @each $vert in $vertical {
-//      .items_#{$vert} {
-//          @include v-align($vert);
-//      }
-//  }
-
- 
-
-//  @for $i from 1 through 11 {
-//      .push_#{$i} {
-//          @include col-push($i);
-//      }
-//  }
-
-//  @for $i from 1 through 11 {
-//      .pull_#{$i} {
-//          @include col-pull($i);
-//      }
-//  }
+}
