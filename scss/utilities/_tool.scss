@@ -1,21 +1,9 @@
 @function device($size) {
-    @return map-get($breakpoints, $size);
+  @return map-get($breakpoints, $size);
 }
 
-
-
-
-
-// @mixin adaptive($size) {
-//     @if (type-of($size)==number) {
-//         @media (max-width: $size + "px") {
-//             @content
-//         }
-//     } @else {
-//         @media (max-width: map-get($map: $media, $key: $size)) {
-//             @content
-//         }
-//     }
-// }
-
-
+@mixin m-f($size) {
+  @media screen and (min-width: device($size)) {
+    @content
+  }
+}
