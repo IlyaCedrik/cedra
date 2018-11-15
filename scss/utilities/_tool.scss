@@ -7,3 +7,10 @@
     @content
   }
 }
+
+@mixin responsive($size) {
+  @media screen and (max-width: device($size)) {
+    @content
+  }
+}
+
